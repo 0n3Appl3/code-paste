@@ -18,9 +18,12 @@ const textField = ref('editor__text-field')
 const textInput = ref(null)
 
 const resize = () => {
-    const element = textInput.value;
-    element.style.height = 'auto';
-    element.style.height = element.scrollHeight + 'px';
+    const element = textInput.value
+    element.style.height = 'auto'
+    element.style.height = element.scrollHeight + 'px'
+    element.style.width = 'auto'
+    element.style.width = (element.scrollWidth + 15) + 'px'
+
 }
 </script>
 
@@ -31,7 +34,7 @@ const resize = () => {
             <div :class="toolbarMinimise"></div>
             <div :class="toolbarMaximise"></div>
         </div>
-        <textarea @input="resize" ref="textInput" name="code" :class="textField" placeholder="console.log('Hello World!');"></textarea>
+        <textarea @input="resize" ref="textInput" name="code" :class="textField" placeholder="Enter your code"></textarea>
     </div>
 </template>
 
@@ -71,6 +74,8 @@ const resize = () => {
     border-radius: 0 0 v-bind(borderRadius) v-bind(borderRadius);
     padding: 0.8rem;
     color: #eee;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .editor__text-field::placeholder {
     color: #eee;
