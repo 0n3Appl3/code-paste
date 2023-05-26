@@ -15,6 +15,13 @@ const toolbarMaximise = ref('editor__toolbar-maximise')
 
 // Editor Text Field Styling
 const textField = ref('editor__text-field')
+const textInput = ref(null)
+
+const resize = () => {
+    const element = textInput.value;
+    element.style.height = 'auto';
+    element.style.height = element.scrollHeight + 'px';
+}
 </script>
 
 <template>
@@ -24,7 +31,7 @@ const textField = ref('editor__text-field')
             <div :class="toolbarMinimise"></div>
             <div :class="toolbarMaximise"></div>
         </div>
-        <textarea name="code" :class="textField" placeholder="console.log('Hello World!');"></textarea>
+        <textarea @input="resize" ref="textInput" name="code" :class="textField" placeholder="console.log('Hello World!');"></textarea>
     </div>
 </template>
 
@@ -59,6 +66,7 @@ const textField = ref('editor__text-field')
 .editor__text-field {
     background-color: #1b3038;
     outline: none;
+    resize: none;
     border: none;
     border-radius: 0 0 v-bind(borderRadius) v-bind(borderRadius);
     padding: 0.8rem;
