@@ -5,12 +5,16 @@ const hello = ref('Hello world!')
 
 // Editor Container Styling
 const container = ref('editor__container')
+const borderRadius = ref('0.5rem')
 
 // Toolbar Styling
 const toolbar = ref('editor__toolbar')
 const toolbarClose = ref('editor__toolbar-close')
 const toolbarMinimise = ref('editor__toolbar-minimise')
 const toolbarMaximise = ref('editor__toolbar-maximise')
+
+// Editor Text Field Styling
+const textField = ref('editor__text-field')
 </script>
 
 <template>
@@ -20,8 +24,8 @@ const toolbarMaximise = ref('editor__toolbar-maximise')
             <div :class="toolbarMinimise"></div>
             <div :class="toolbarMaximise"></div>
         </div>
+        <textarea name="code" :class="textField" placeholder="console.log('Hello World!');"></textarea>
     </div>
-    <textarea name="code" placeholder="console.log('Hello World!');"></textarea>
 </template>
 
 <style scoped>
@@ -33,6 +37,7 @@ const toolbarMaximise = ref('editor__toolbar-maximise')
     display: flex;
     align-items: center;
     padding: 0.5rem 0.8rem;
+    border-radius: v-bind(borderRadius) v-bind(borderRadius) 0 0;
     background-color: #59676e;
 }
 .editor__toolbar-close, .editor__toolbar-minimise, .editor__toolbar-maximise {
@@ -50,5 +55,16 @@ const toolbarMaximise = ref('editor__toolbar-maximise')
 }
 .editor__toolbar-maximise {
     background-color: #00ca4e;
+}
+.editor__text-field {
+    background-color: #1b3038;
+    outline: none;
+    border: none;
+    border-radius: 0 0 v-bind(borderRadius) v-bind(borderRadius);
+    padding: 0.8rem;
+    color: #eee;
+}
+.editor__text-field::placeholder {
+    color: #eee;
 }
 </style>
