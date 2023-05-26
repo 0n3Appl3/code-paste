@@ -23,7 +23,6 @@ const resize = () => {
     element.style.height = element.scrollHeight + 'px'
     element.style.width = 'auto'
     element.style.width = (element.scrollWidth + 15) + 'px'
-
 }
 </script>
 
@@ -42,12 +41,14 @@ const resize = () => {
 .editor__container {
     display: block;
     width: 100%;
+    box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.56); 
+    border-radius: v-bind(borderRadius);
+    overflow: hidden;
 }
 .editor__toolbar {
     display: flex;
     align-items: center;
     padding: 0.5rem 0.8rem;
-    border-radius: v-bind(borderRadius) v-bind(borderRadius) 0 0;
     background-color: #59676e;
 }
 .editor__toolbar-close, .editor__toolbar-minimise, .editor__toolbar-maximise {
@@ -67,11 +68,11 @@ const resize = () => {
     background-color: #00ca4e;
 }
 .editor__text-field {
+    display: block;
     background-color: #1b3038;
     outline: none;
     resize: none;
     border: none;
-    border-radius: 0 0 v-bind(borderRadius) v-bind(borderRadius);
     padding: 0.8rem;
     color: #eee;
     white-space: nowrap;
