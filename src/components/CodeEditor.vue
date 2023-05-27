@@ -19,6 +19,11 @@ const toolbarTitleText = ref('Untitled-1')
 
 // Editor Text Field Styling
 const textField = ref('editor__text-field')
+const textInputText = ref(`class Main {` +
+                        `\n   public static void main(String[] args) {` +
+                        `\n      System.out.println('Hello World!');` +
+                        `\n   }` +
+                        `\n}`)
 const textInput = ref(null)
 
 // Watermark Styling
@@ -32,6 +37,7 @@ onMounted(() => {
         speed: 400,
         perspective: 500,
     })
+    resize()
 })
 
 // Methods
@@ -121,7 +127,7 @@ const getCaretCharacterOffsetWithin = () => {
              @input="resize" ref="textInput" 
              contenteditable="true" 
              spellcheck="false"
-             :class="textField"></div>
+             :class="textField">{{ textInputText }}</div>
         <div :class="watermark">{{ watermarkText }}</div>
     </div>
 </template>
