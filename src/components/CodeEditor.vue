@@ -12,6 +12,8 @@ const toolbar = ref('editor__toolbar')
 const toolbarClose = ref('editor__toolbar-close')
 const toolbarMinimise = ref('editor__toolbar-minimise')
 const toolbarMaximise = ref('editor__toolbar-maximise')
+const toolbarTitle = ref('editor__toolbar-title')
+const toolbarTitleText = ref('Untitled-1')
 
 // Editor Text Field Styling
 const textField = ref('editor__text-field')
@@ -19,6 +21,7 @@ const textInput = ref(null)
 
 // Watermark Styling
 const watermark = ref('editor__watermark')
+const watermarkText = ref('jeddlupoy.com')
 
 // Methods
 const resize = () => {
@@ -99,13 +102,16 @@ const getCaretCharacterOffsetWithin = () => {
             <div :class="toolbarClose"></div>
             <div :class="toolbarMinimise"></div>
             <div :class="toolbarMaximise"></div>
+            <div :class="toolbarTitle"
+                 contenteditable="true"
+                 spellcheck="false">{{ toolbarTitleText }}</div>
         </div>
         <div v-on:keydown.enter="enter"
              @input="resize" ref="textInput" 
              contenteditable="true" 
              spellcheck="false"
              :class="textField"></div>
-        <div :class="watermark">jeddlupoy.com</div>
+        <div :class="watermark">{{ watermarkText }}</div>
     </div>
 </template>
 
@@ -123,6 +129,9 @@ const getCaretCharacterOffsetWithin = () => {
     padding: 0.5rem 0.8rem;
     background-color: #59676e;
 }
+.editor__toolbar > div:last-child {
+    margin: auto;
+}
 .editor__toolbar-close, .editor__toolbar-minimise, .editor__toolbar-maximise {
     display: inline-block;
     width: 0.9rem;
@@ -139,19 +148,32 @@ const getCaretCharacterOffsetWithin = () => {
 .editor__toolbar-maximise {
     background-color: #00ca4e;
 }
+.editor__toolbar-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ddd;
+    padding: 0 1rem;
+    border-radius: 0.3rem;
+    transition: all 0.5s ease-in-out;
+}
+.editor__toolbar-title:focus, .editor__toolbar-title:hover {
+    outline: 1px solid;
+}
+.editor__toolbar-title, .editor__text-field {
+    outline: none;
+    border: none;
+}
 .editor__text-field {
     display: block;
     font-family: Courier, monospace;
-    outline: none;
     resize: none;
-    border: none;
     padding: 0.8rem;
     color: #eee;
     white-space: pre;
     overflow: hidden;
-}
-.editor__text-field::placeholder {
-    color: #eee;
 }
 .editor__watermark, .editor__text-field {
     background-color: #1b3038;
