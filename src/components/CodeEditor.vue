@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import hljs from 'highlight.js'
+import hljs from 'highlight.js/lib/common'
+import 'highlight.js/styles/base16/solar-flare.css'
 
 // Editor Container Styling
 const container = ref('editor__container')
@@ -16,6 +17,10 @@ const toolbarMaximise = ref('editor__toolbar-maximise')
 const textField = ref('editor__text-field')
 const textInput = ref(null)
 
+// Watermark Styling
+const watermark = ref('editor__watermark')
+
+// Methods
 const resize = () => {
     const element = textInput.value
     const caretPosition = getCaretCharacterOffsetWithin()
@@ -95,11 +100,12 @@ const getCaretCharacterOffsetWithin = () => {
             <div :class="toolbarMinimise"></div>
             <div :class="toolbarMaximise"></div>
         </div>
-        <!-- <textarea @input="resize" ref="textInput" name="code" :class="textField" placeholder="Enter your code"></textarea> -->
         <div v-on:keydown.enter="enter"
              @input="resize" ref="textInput" 
              contenteditable="true" 
+             spellcheck="false"
              :class="textField"></div>
+        <div :class="watermark">jeddlupoy.com</div>
     </div>
 </template>
 
@@ -119,8 +125,8 @@ const getCaretCharacterOffsetWithin = () => {
 }
 .editor__toolbar-close, .editor__toolbar-minimise, .editor__toolbar-maximise {
     display: inline-block;
-    width: 1rem;
-    height: 1rem;
+    width: 0.9rem;
+    height: 0.9rem;
     margin-right: 0.5rem;
     border-radius: 50%;
 }
@@ -135,8 +141,7 @@ const getCaretCharacterOffsetWithin = () => {
 }
 .editor__text-field {
     display: block;
-    background-color: #1b3038;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Courier, monospace;
     outline: none;
     resize: none;
     border: none;
@@ -147,5 +152,13 @@ const getCaretCharacterOffsetWithin = () => {
 }
 .editor__text-field::placeholder {
     color: #eee;
+}
+.editor__watermark, .editor__text-field {
+    background-color: #1b3038;
+}
+.editor__watermark {
+    color: #6d7d85;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
 }
 </style>
