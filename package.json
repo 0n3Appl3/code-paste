@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "highlight.js": "^11.8.0",
+    "vanilla-tilt": "^1.8.0",
     "vue": "^3.3.2"
   },
   "devDependencies": {

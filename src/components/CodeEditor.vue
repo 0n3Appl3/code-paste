@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import VanillaTilt from 'vanilla-tilt'
 import hljs from 'highlight.js/lib/common'
 import 'highlight.js/styles/base16/solar-flare.css'
 
 // Editor Container Styling
 const container = ref('editor__container')
+const codeContainer = ref(null)
 const borderRadius = ref('0.5rem')
 
 // Toolbar Styling
@@ -22,6 +24,15 @@ const textInput = ref(null)
 // Watermark Styling
 const watermark = ref('editor__watermark')
 const watermarkText = ref('jeddlupoy.com')
+
+onMounted(() => {
+    VanillaTilt.init(codeContainer.value, {
+        max: 7,
+        scale: 1.07,
+        speed: 400,
+        perspective: 500,
+    })
+})
 
 // Methods
 const resize = () => {
@@ -97,7 +108,7 @@ const getCaretCharacterOffsetWithin = () => {
 </script>
 
 <template>
-    <div :class="container">
+    <div :class="container" ref="codeContainer">
         <div :class="toolbar">
             <div :class="toolbarClose"></div>
             <div :class="toolbarMinimise"></div>
