@@ -1,46 +1,30 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 import CodeEditor from './components/CodeEditor.vue'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <CodeEditor />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+	<header>
+		<h1>Code Paste</h1>
+		<p>Paste. Edit. Share. By <a href="https://jeddlupoy.com/" target="_blank">Jedd Lupoy</a>.</p>
+	</header>
+	<main>
+		<CodeEditor />
+	</main>
 </template>
 
 <style scoped>
 header {
-  line-height: 1.5;
+	display: block;
+	line-height: 1.5;
+	text-align: center;
+	margin: auto;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+header > h1 {
+	font-weight: bold;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+main {
+	padding-top: 5rem;
 }
 </style>
