@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import CodeEditor from './components/CodeEditor.vue'
+import SaveButton from './components/SaveButton.vue'
 </script>
 
 <template>
 	<header>
 		<h1>Code Paste</h1>
 		<p>Paste. Edit. Share. By <a href="https://jeddlupoy.com/" target="_blank">Jedd Lupoy</a>.</p>
+		<SaveButton />
 	</header>
 	<main>
 		<CodeEditor />

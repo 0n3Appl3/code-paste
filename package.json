@@ -11,7 +11,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "downloadjs": "^1.4.7",
     "highlight.js": "^11.8.0",
+    "html-to-image": "^1.11.11",
     "vanilla-tilt": "^1.8.0",
     "vue": "^3.3.2"
   },
