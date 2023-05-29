@@ -145,6 +145,7 @@ const getCaretCharacterOffsetWithin = () => {
     align-items: center;
     padding: 0.5rem 0.8rem;
     background-color: #59676e;
+    overflow: visible;
 }
 .editor__toolbar > div:last-child {
     margin: auto;
